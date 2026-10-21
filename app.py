@@ -202,7 +202,7 @@ def build_pdf(client, dietitian, program_date, logo_bytes, meal_data, notes):
     doc.build(story)
     return buffer.getvalue()
 
-st.title("🥗 Diyetisyen PDF Oluşturucu")
+st.title("🥗 Diyetisyen Sevgi Topçi")
 st.caption("Altı öğünlü programınızı hazırlayın, önizleyin ve PDF olarak indirin.")
 st.info("Gizlilik notu: Bu Streamlit sürümünde form verileri PDF oluşturulurken uygulamanın çalıştığı sunucuya iletilir. Uygulama bu kodda bilgileri veritabanına kaydetmez. Hassas danışan bilgilerini girmeden önce barındırma ve gizlilik koşullarını değerlendirmeniz gerekir.")
 
