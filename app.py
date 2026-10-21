@@ -15,7 +15,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.utils import ImageReader
 
-st.set_page_config(page_title="Diyetisyen PDF Oluşturucu", page_icon="🥗", layout="wide")
+st.set_page_config(page_title="Diyetisyen Sevgi Topçu", page_icon="🥗", layout="wide")
 
 GREEN = colors.HexColor("#245C49")
 PALE = colors.HexColor("#EDF5EF")
