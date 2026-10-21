@@ -1,4 +1,5 @@
 import io
+import urllib.parse
 from datetime import date
 import streamlit as st
 from reportlab.lib import colors
@@ -254,3 +255,26 @@ if submitted:
                            mime="application/pdf")
     except Exception as exc:
         st.error(f"PDF oluşturulurken bir sorun oluştu: {exc}")
+st.divider() # Araya şık bir çizgi çeker
+st.subheader("📱 WhatsApp ile Danışana Gönder")
+
+# Telefon numarası ve mesaj alanları
+col1, col2 = st.columns(2)
+with col1:
+    telefon = st.text_input("Danışanın Telefonu (Örn: 5551234567)")
+with col2:
+    mesaj = st.text_area("Mesajınız", "Merhaba! Bu haftaki diyet listenizi hazırladım. İndirdiğim PDF dosyasını bu mesaja ekleyerek iletiyorum. İyi haftalar! 🍏")
+
+# Telefon numarası girildiyse WhatsApp butonunu göster
+if telefon:
+    # Numarayı WhatsApp'ın anlayacağı formata çeviriyoruz (Boşlukları sil, başına 90 ekle)
+    temiz_no = telefon.replace(" ", "").replace("+", "").replace("-", "")
+    if not temiz_no.startswith("90"):
+        temiz_no = "90" + temiz_no
+        
+    # Mesajı linke uygun hale getiriyoruz
+    url_mesaj = urllib.parse.quote(mesaj)
+    wa_link = f"https://wa.me/{temiz_no}?text={url_mesaj}"
+    
+    # Yeşil WhatsApp butonu
+    st.link_button("🟢 WhatsApp'ta Sohbeti Aç", wa_link)
